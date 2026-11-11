@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowers Box | ورد للأعراس والمناسبات</title>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0d;--panel:#1a1814;--gold:#d4b05a;--gold2:#f0d98f;--text:#f3ece0;--muted:#b3a98f;--line:rgba(212,176,90,.35)}
+*{box-sizing:border-box;margin:0}
+body{font-family:Tajawal,Tahoma,sans-serif;color:var(--text);line-height:1.8;
+background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),url(images/logo.jpg) center/contain no-repeat fixed,#0d0d0d}
+h1,h2,h3{font-family:'Reem Kufi',Tajawal,sans-serif;color:var(--gold2);font-weight:700}
+.wrap{max-width:1000px;margin:auto;padding:0 18px}
+header{text-align:center;padding:60px 0 28px}
+header p{color:var(--muted);margin-top:10px}
+.btn{display:inline-block;background:var(--gold);color:#16120a;border:0;border-radius:6px;padding:12px 28px;font:700 1.05rem Tajawal,sans-serif;cursor:pointer;text-decoration:none}
+.btn:hover,.btn:focus-visible{background:var(--gold2);outline:2px solid var(--gold2);outline-offset:3px}
+.btn.alt{background:transparent;color:var(--gold2);border:1px solid var(--gold)}
+section{padding:36px 0}
+section>.wrap>h2{font-size:1.9rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.cat{background:var(--panel);border:1px solid var(--line);padding:20px 22px}
+.cat h3{font-size:1.3rem;margin-bottom:4px}
+.cat .note{color:var(--muted);font-size:.92rem;margin-bottom:10px}
+.cat ul{list-style:none;padding:0}
+.cat li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px dashed var(--line)}
+.cat li b{color:var(--gold);white-space:nowrap}
+.info{margin-top:18px;color:var(--muted)}
+.branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.branch{border-right:3px solid var(--gold);padding:6px 14px;background:rgba(0,0,0,.45)}
+.branch strong{color:var(--gold2)}
+.pdf-actions{margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap}
+.pdfbox{border:1px solid var(--line);background:var(--panel);padding:10px}
+.pdfbox iframe{width:100%;height:80vh;min-height:420px;border:0;background:#fff}
+form{background:var(--panel);border:1px solid var(--line);padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+label{display:block;color:var(--gold2);margin-bottom:4px;font-weight:500}
+input,select,textarea{width:100%;background:#0f0e0b;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:11px;font:1rem Tajawal,sans-serif}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.radios{display:flex;gap:22px;flex-wrap:wrap}
+.radios label{display:flex;gap:8px;align-items:center;color:var(--text);margin:0;cursor:pointer}
+.radios input{width:auto;accent-color:var(--gold)}
+.err{color:#ff9d8f;grid-column:1/-1;min-height:1.4em}
+footer{text-align:center;color:var(--muted);padding:30px 0 40px;border-top:1px solid var(--line);margin-top:20px}
+#thanks{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:18px;z-index:9}
+#thanks.on{display:flex}
+.card{background:var(--panel);border:1px solid var(--gold);max-width:480px;width:100%;padding:24px;text-align:center;max-height:94vh;overflow:auto}
+.card img.ref{width:100%;max-height:330px;object-fit:cover;margin:14px 0;border:1px solid var(--line)}
+.card .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+@media(max-width:640px){form{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 style="font-size:2.6rem">Flowers Box</h1>
+  <p>ورد للأعراس والمناسبات، بأيدي فريقنا وبكل ألوان الورد</p>
+  <p style="margin-top:20px"><a class="btn" href="#order">اطلب الآن</a> <a class="btn alt" href="#catalog">شاهد أعمالنا</a></p>
+</header>
+
+<section id="prices"><div class="wrap">
+  <h2>الأقسام والأسعار</h2>
+  <p class="sub">الأسعار بالليرة السورية الجديدة.</p>
+  <div class="grid" id="cats"></div>
+  <p class="info">يتوفر تقريباً كل ألوان الورد وأنواعه، ويتوفر التغليف بعدة ألوان.</p>
+</div></section>
+
+<section id="catalog"><div class="wrap">
+  <h2>من أعمالنا</h2>
+  <p class="sub">تصفح كتالوج أعمالنا مباشرة هنا.</p>
+  <div class="pdf-actions">
+    <a href="catalog.pdf" target="_blank" class="btn alt" style="padding:8px 16px;font-size:0.9rem">عرض الكتالوج كامل (PDF) ↗</a>
+  </div>
+  <div class="pdfbox">
+    <iframe src="catalog.pdf#toolbar=0&navpanes=0" title="كتالوج أعمال Flowers Box"></iframe>
+  </div>
+</div></section>
+
+<section id="order"><div class="wrap">
+  <h2>اطلب الآن</h2>
+  <p class="sub">عبّئ البيانات وسيفتح واتساب الفرع الذي اخترته برسالة جاهزة، اضغط إرسال لإكمال الطلب.</p>
+  <form id="f" novalidate>
+    <div><label for="name">الاسم</label><input id="name" required></div>
+    <div><label for="phone">رقم الهاتف</label><input id="phone" type="tel" inputmode="tel" required></div>
+    <div><label for="branch">الفرع</label>
+      <select id="branch" required><option value="">اختر الفرع</option></select></div>
+    <div><label for="item">المنتج المطلوب</label>
+      <select id="item" required><option value="">اختر المنتج</option></select></div>
+    
+    <!-- خانة عدد الورد مخصصة للباقات فقط وتظهر فقط عند اختيار قسم باقات الورد -->
+    <div class="full" id="flowerCountBox" hidden>
+      <label for="flowerCount">عدد الورد المطلوب (خاص بالباقة)</label>
+      <input id="flowerCount" type="number" min="1" placeholder="مثال: 12 وردة">
+    </div>
+
+    <div><label for="date">تاريخ الطلب</label><input id="date" type="date" required></div>
+    <div><label for="time">الساعة</label><input id="time" type="time" required></div>
+    <div class="full"><label>طريقة الاستلام</label>
+      <div class="radios">
+        <label><input type="radio" name="dl" value="استلام من الفرع" checked> استلام من الفرع</label>
+        <label><input type="radio" name="dl" value="توصيل"> توصيل</label>
+      </div></div>
+    <div class="full" id="addrBox" hidden><label for="addr">عنوان التوصيل</label><input id="addr"></div>
+    <div class="full"><label for="notes">ملاحظات</label>
+      <textarea id="notes" rows="4" placeholder="لون الورد، لون التغليف، بطاقة وعبارة، مبلغ مالي داخل الهدية..."></textarea></div>
+    <div class="err" id="err" role="alert"></div>
+    <div class="full"><button class="btn" type="submit">أرسل الطلب عبر واتساب</button></div>
+  </form>
+</div></section>
+
+<section id="branches"><div class="wrap">
+  <h2>فروعنا</h2>
+  <div class="branches" id="bl"></div>
+</div></section>
+
+<footer>© Flowers Box</footer>
+
+<div id="thanks" role="dialog" aria-modal="true"><div class="card">
+  <h2>شكراً لك</h2>
+  <p>تم تجهيز طلبك. إذا لم يفتح واتساب، اضغط الزر أدناه.</p>
+  <img class="ref" id="refImg" alt="" hidden>
+  <p id="refCap" style="color:var(--muted);font-size:.9rem"></p>
+  <div class="row"><a class="btn" id="again" target="_blank" rel="noopener">افتح واتساب</a>
+  <button class="btn alt" id="close" type="button">إغلاق</button></div>
+</div></div>
+
+<script>
+/* ====== عدّل البيانات من هون ====== */
+const BRANCHES=[
+ {name:"قدسيا",place:"جمعيات، مول ميرابيلا",wa:"963968260899"},
+ {name:"الهامة",place:"جانب مغسل النمر، بناء مجمع النور",wa:"963939039255"},
+ {name:"جديدة عرطوز",place:"شارع الجلاء، ساحة بيسان",wa:"963935459323"}
+];
+const CURRENCY="ليرة سورية جديدة";
+/* image: صورة تظهر للزبون بعد الطلب (ضعها في مجلد images) */
+const CATS=[
+ {id:"bouquets",title:"باقات الورد",image:"images/bouquets.jpg",note:"ورد طبيعي أو صناعي بكل الألوان",
+  items:[["باقة صغيرة","500"],["باقة وسط","من 750 إلى 1500"],["باقة كبيرة","من 2000 وأكثر"],["وردة طبيعية","50"],["وردة صناعية","من 70 وأكثر"]]},
+ {id:"tables",title:"صحون طاولة",image:"images/tables.jpg",note:"تنسيقات صحون طاولة فاخرة",
+  items:[["صحن طاولة","من 2000 وأكثر"]]},
+ {id:"arrangements",title:"التنسيقات",image:"images/arrangements.jpg",note:"طبيعية أو صناعية",
+  items:[["تنسيق ورد","من 2500 وأكثر"]]},
+ {id:"engagement",title:"كوشات الخطوبة والأعراس",image:"images/engagement.jpg",note:"",
+  items:[["كوشة خطوبة","من 5000 وأكثر"],["ستاند محابس للخطوبة والأعراس","من 1750 وأكثر"]]},
+ {id:"cars",title:"تزيين السيارات",image:"images/cars.jpg",note:"",
+  items:[["تزيين سيارة","من 2500 وأكثر"]]},
+ {id:"wrapping",title:"تغليف الهدايا",image:"images/wrapping.jpg",note:"التغليف متوفر بعدة ألوان",
+  items:[["تغليف هدية","حسب الطلب"]]}
+];
+/* ================================== */
+
+const $=id=>document.getElementById(id);
+$("cats").innerHTML=CATS.map(c=>`<div class="cat"><h3>${c.title}</h3>${c.note?`<div class="note">${c.note}</div>`:""}<ul>${c.items.php||c.items.map(i=>`<li><span>${i[0]}</span><b>${i[1]}${/\d/.test(i[1])?" "+CURRENCY:""}</b></li>`).join("")}</ul></div>`).join("");
+$("bl").innerHTML=BRANCHES.map(b=>`<div class="branch"><strong>${b.name}</strong><br>${b.place}<br><span dir="ltr">+${b.wa}</span></div>`).join("");
+BRANCHES.forEach((b,i)=>$("branch").add(new Option(b.name+" - "+b.place,i)));
+CATS.forEach((c,ci)=>{const g=document.createElement("optgroup");g.label=c.title;
+ c.items.forEach((it,ii)=>g.appendChild(new Option(it[0]+" ("+it[1]+")",ci+"-"+ii)));$("item").appendChild(g)});
+$("date").min=new Date().toISOString().split("T")[0];
+
+// إظهار وإخفاء خانة عدد الورد عند اختيار قسم الباقات (القسم الأول ci == 0)
+$("item").onchange=()=>{
+  const val=$("item").value;
+  if(!val) return;
+  const ci = val.split("-")[0];
+  const isBouquet = (CATS[ci].id === "bouquets");
+  $("flowerCountBox").hidden = !isBouquet;
+  if(!isBouquet) $("flowerCount").value = "";
+};
+
+document.querySelectorAll('[name=dl]').forEach(r=>r.onchange=()=>{
+ const d=document.querySelector('[name=dl]:checked').value==="توصيل";$("addrBox").hidden=!d});
+
+$("f").addEventListener("submit",e=>{
+ e.preventDefault();
+ const v=id=>$(id).value.trim(), dl=document.querySelector('[name=dl]:checked').value;
+ const need=["name","phone","branch","item","date","time"].some(k=>!v(k));
+ if(need){$("err").textContent="الرجاء تعبئة الاسم والهاتف والفرع والمنتج والتاريخ والساعة.";return}
+ if(dl==="توصيل"&&!v("addr")){$("err").textContent="الرجاء كتابة عنوان التوصيل.";return}
+ $("err").textContent="";
+ const b=BRANCHES[v("branch")],[ci,ii]=v("item").split("-"),cat=CATS[ci],it=cat.items[ii];
+ 
+ const count = (cat.id === "bouquets") ? v("flowerCount") : "";
+
+ const msg=["طلب جديد من موقع Flowers Box","",
+  "الاسم: "+v("name"),"الهاتف: "+v("phone"),"الفرع: "+b.name,
+  "القسم: "+cat.title,"المنتج: "+it[0]+" ("+it[1]+" "+CURRENCY+")",
+  ...(count?["عدد الورد: "+count]:[]),
+  "التاريخ: "+v("date"),"الساعة: "+v("time"),"الاستلام: "+dl,
+  ...(dl==="توصيل"?["العنوان: "+v("addr")]:[]),
+  ...(v("notes")?["ملاحظات: "+v("notes")]:[])].join("\n");
+ const url="https://wa.me/"+b.wa+"?text="+encodeURIComponent(msg);
+ window.open(url,"_blank");
+ $("again").href=url;
+ const img=$("refImg");img.hidden=false;img.src=cat.image;img.alt=cat.title;
+ img.onerror=()=>{img.hidden=true;$("refCap").textContent=""};
+ $("refCap").textContent="صورة مقاربة من أعمالنا في قسم "+cat.title;
+ $("thanks").classList.add("on");
+});
+$("close").onclick=()=>$("thanks").classList.remove("on");
+</script>
+</body>
+</html>
